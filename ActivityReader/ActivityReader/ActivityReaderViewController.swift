@@ -7,7 +7,6 @@ protocol ActivityReaderDisplayLogic: class {
 class ActivityReaderViewController: UIViewController, ActivityReaderDisplayLogic {
     
     private var interactor: ActivityReaderBusinessLogic?
-    private var router: (NSObjectProtocol & ActivityReaderRoutingLogic)?
     
     // MARK: IBOutlets & IBActions
     
@@ -27,12 +26,9 @@ class ActivityReaderViewController: UIViewController, ActivityReaderDisplayLogic
         let viewController        = self
         let interactor            = ActivityReaderInteractor()
         let presenter             = ActivityReaderPresenter()
-        let router                = ActivityReaderRouter()
         viewController.interactor = interactor
-        viewController.router     = router
         interactor.presenter      = presenter
         presenter.viewController  = viewController
-        router.viewController     = viewController
     }
     
     // MARK: View lifecycle
@@ -54,9 +50,16 @@ class ActivityReaderViewController: UIViewController, ActivityReaderDisplayLogic
     }
     
     private func showAlert() {
-//        let alertController = UIAlertController(title: "Done", message: "Note:", preferredStyle: .alert)
-//        alertController.addTextField { (textField) in
-//            <#code#>
-//        }
+        let alertController = UIAlertController(title: "Done", message: "Note:", preferredStyle: .alert)
+        alertController.addTextField(configurationHandler: nil)
+        alertController.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak self] _ in
+            if let text = alertController.textFields?.first?.text {
+                self?.interactor?.makeRequest(request: .save(text))
+            }
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { [weak self] _ in
+            self?.interactor?.makeRequest(request: .delete)
+        }))
+        self.present(alertController, animated: true, completion: nil)
     }
 }

@@ -3,17 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C17B99CA23A401CF0023EAD2 /* CSV in Frameworks */ = {isa = PBXBuildFile; productRef = C17B99C923A401CF0023EAD2 /* CSV */; };
 		C1BD633B23A3E7CA009F4148 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BD633A23A3E7CA009F4148 /* AppDelegate.swift */; };
 		C1BD633D23A3E7CA009F4148 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BD633C23A3E7CA009F4148 /* SceneDelegate.swift */; };
 		C1BD634423A3E7CB009F4148 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1BD634323A3E7CB009F4148 /* Assets.xcassets */; };
 		C1BD634723A3E7CB009F4148 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1BD634523A3E7CB009F4148 /* LaunchScreen.storyboard */; };
 		C1BD635523A3E80D009F4148 /* ActivityReaderPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BD634E23A3E80D009F4148 /* ActivityReaderPresenter.swift */; };
 		C1BD635623A3E80D009F4148 /* ActivityReaderWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BD634F23A3E80D009F4148 /* ActivityReaderWorker.swift */; };
-		C1BD635723A3E80D009F4148 /* ActivityReaderRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BD635023A3E80D009F4148 /* ActivityReaderRouter.swift */; };
 		C1BD635823A3E80D009F4148 /* ActivityReaderModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BD635123A3E80D009F4148 /* ActivityReaderModels.swift */; };
 		C1BD635923A3E80D009F4148 /* ActivityReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BD635223A3E80D009F4148 /* ActivityReaderViewController.swift */; };
 		C1BD635A23A3E80D009F4148 /* ActivityReaderInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BD635323A3E80D009F4148 /* ActivityReaderInteractor.swift */; };
@@ -30,7 +30,6 @@
 		C1BD634823A3E7CB009F4148 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C1BD634E23A3E80D009F4148 /* ActivityReaderPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityReaderPresenter.swift; sourceTree = "<group>"; };
 		C1BD634F23A3E80D009F4148 /* ActivityReaderWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityReaderWorker.swift; sourceTree = "<group>"; };
-		C1BD635023A3E80D009F4148 /* ActivityReaderRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityReaderRouter.swift; sourceTree = "<group>"; };
 		C1BD635123A3E80D009F4148 /* ActivityReaderModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityReaderModels.swift; sourceTree = "<group>"; };
 		C1BD635223A3E80D009F4148 /* ActivityReaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityReaderViewController.swift; sourceTree = "<group>"; };
 		C1BD635323A3E80D009F4148 /* ActivityReaderInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityReaderInteractor.swift; sourceTree = "<group>"; };
@@ -43,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C17B99CA23A401CF0023EAD2 /* CSV in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,7 +88,6 @@
 				C1BD634E23A3E80D009F4148 /* ActivityReaderPresenter.swift */,
 				C1BD635123A3E80D009F4148 /* ActivityReaderModels.swift */,
 				C1BD634F23A3E80D009F4148 /* ActivityReaderWorker.swift */,
-				C1BD635023A3E80D009F4148 /* ActivityReaderRouter.swift */,
 			);
 			path = ActivityReader;
 			sourceTree = "<group>";
@@ -109,6 +108,9 @@
 			dependencies = (
 			);
 			name = ActivityReader;
+			packageProductDependencies = (
+				C17B99C923A401CF0023EAD2 /* CSV */,
+			);
 			productName = ActivityReader;
 			productReference = C1BD633723A3E7CA009F4148 /* ActivityReader.app */;
 			productType = "com.apple.product-type.application";
@@ -137,6 +139,9 @@
 				Base,
 			);
 			mainGroup = C1BD632E23A3E7CA009F4148;
+			packageReferences = (
+				C17B99C823A401CF0023EAD2 /* XCRemoteSwiftPackageReference "CSV.swift" */,
+			);
 			productRefGroup = C1BD633823A3E7CA009F4148 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -169,7 +174,6 @@
 				C1BD633B23A3E7CA009F4148 /* AppDelegate.swift in Sources */,
 				C1BD635923A3E80D009F4148 /* ActivityReaderViewController.swift in Sources */,
 				C1BD635623A3E80D009F4148 /* ActivityReaderWorker.swift in Sources */,
-				C1BD635723A3E80D009F4148 /* ActivityReaderRouter.swift in Sources */,
 				C1BD636023A3E97C009F4148 /* UIViewController+UIStoryboard.swift in Sources */,
 				C1BD635A23A3E80D009F4148 /* ActivityReaderInteractor.swift in Sources */,
 				C1BD633D23A3E7CA009F4148 /* SceneDelegate.swift in Sources */,
@@ -362,6 +366,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C17B99C823A401CF0023EAD2 /* XCRemoteSwiftPackageReference "CSV.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yaslab/CSV.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C17B99C923A401CF0023EAD2 /* CSV */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C17B99C823A401CF0023EAD2 /* XCRemoteSwiftPackageReference "CSV.swift" */;
+			productName = CSV;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C1BD632F23A3E7CA009F4148 /* Project object */;
 }

@@ -6,6 +6,8 @@ enum ActivityReader {
         struct Request {
             enum RequestType {
                 case checkActivityReader
+                case save(_ text: String)
+                case delete
             }
         }
         struct Response {
