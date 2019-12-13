@@ -9,21 +9,33 @@
 /* Begin PBXBuildFile section */
 		C1BD633B23A3E7CA009F4148 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BD633A23A3E7CA009F4148 /* AppDelegate.swift */; };
 		C1BD633D23A3E7CA009F4148 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BD633C23A3E7CA009F4148 /* SceneDelegate.swift */; };
-		C1BD633F23A3E7CA009F4148 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BD633E23A3E7CA009F4148 /* ViewController.swift */; };
-		C1BD634223A3E7CA009F4148 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1BD634023A3E7CA009F4148 /* Main.storyboard */; };
 		C1BD634423A3E7CB009F4148 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1BD634323A3E7CB009F4148 /* Assets.xcassets */; };
 		C1BD634723A3E7CB009F4148 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1BD634523A3E7CB009F4148 /* LaunchScreen.storyboard */; };
+		C1BD635523A3E80D009F4148 /* ActivityReaderPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BD634E23A3E80D009F4148 /* ActivityReaderPresenter.swift */; };
+		C1BD635623A3E80D009F4148 /* ActivityReaderWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BD634F23A3E80D009F4148 /* ActivityReaderWorker.swift */; };
+		C1BD635723A3E80D009F4148 /* ActivityReaderRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BD635023A3E80D009F4148 /* ActivityReaderRouter.swift */; };
+		C1BD635823A3E80D009F4148 /* ActivityReaderModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BD635123A3E80D009F4148 /* ActivityReaderModels.swift */; };
+		C1BD635923A3E80D009F4148 /* ActivityReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BD635223A3E80D009F4148 /* ActivityReaderViewController.swift */; };
+		C1BD635A23A3E80D009F4148 /* ActivityReaderInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BD635323A3E80D009F4148 /* ActivityReaderInteractor.swift */; };
+		C1BD635E23A3E82E009F4148 /* ActivityReaderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1BD635D23A3E82E009F4148 /* ActivityReaderViewController.storyboard */; };
+		C1BD636023A3E97C009F4148 /* UIViewController+UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BD635F23A3E97C009F4148 /* UIViewController+UIStoryboard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C1BD633723A3E7CA009F4148 /* ActivityReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ActivityReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1BD633A23A3E7CA009F4148 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1BD633C23A3E7CA009F4148 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C1BD633E23A3E7CA009F4148 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C1BD634123A3E7CA009F4148 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C1BD634323A3E7CB009F4148 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C1BD634623A3E7CB009F4148 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C1BD634823A3E7CB009F4148 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1BD634E23A3E80D009F4148 /* ActivityReaderPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityReaderPresenter.swift; sourceTree = "<group>"; };
+		C1BD634F23A3E80D009F4148 /* ActivityReaderWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityReaderWorker.swift; sourceTree = "<group>"; };
+		C1BD635023A3E80D009F4148 /* ActivityReaderRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityReaderRouter.swift; sourceTree = "<group>"; };
+		C1BD635123A3E80D009F4148 /* ActivityReaderModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityReaderModels.swift; sourceTree = "<group>"; };
+		C1BD635223A3E80D009F4148 /* ActivityReaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityReaderViewController.swift; sourceTree = "<group>"; };
+		C1BD635323A3E80D009F4148 /* ActivityReaderInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityReaderInteractor.swift; sourceTree = "<group>"; };
+		C1BD635D23A3E82E009F4148 /* ActivityReaderViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ActivityReaderViewController.storyboard; sourceTree = "<group>"; };
+		C1BD635F23A3E97C009F4148 /* UIViewController+UIStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+UIStoryboard.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,11 +70,25 @@
 			children = (
 				C1BD633A23A3E7CA009F4148 /* AppDelegate.swift */,
 				C1BD633C23A3E7CA009F4148 /* SceneDelegate.swift */,
-				C1BD633E23A3E7CA009F4148 /* ViewController.swift */,
-				C1BD634023A3E7CA009F4148 /* Main.storyboard */,
+				C1BD635C23A3E814009F4148 /* ActivityReader */,
 				C1BD634323A3E7CB009F4148 /* Assets.xcassets */,
+				C1BD635F23A3E97C009F4148 /* UIViewController+UIStoryboard.swift */,
 				C1BD634523A3E7CB009F4148 /* LaunchScreen.storyboard */,
 				C1BD634823A3E7CB009F4148 /* Info.plist */,
+			);
+			path = ActivityReader;
+			sourceTree = "<group>";
+		};
+		C1BD635C23A3E814009F4148 /* ActivityReader */ = {
+			isa = PBXGroup;
+			children = (
+				C1BD635D23A3E82E009F4148 /* ActivityReaderViewController.storyboard */,
+				C1BD635223A3E80D009F4148 /* ActivityReaderViewController.swift */,
+				C1BD635323A3E80D009F4148 /* ActivityReaderInteractor.swift */,
+				C1BD634E23A3E80D009F4148 /* ActivityReaderPresenter.swift */,
+				C1BD635123A3E80D009F4148 /* ActivityReaderModels.swift */,
+				C1BD634F23A3E80D009F4148 /* ActivityReaderWorker.swift */,
+				C1BD635023A3E80D009F4148 /* ActivityReaderRouter.swift */,
 			);
 			path = ActivityReader;
 			sourceTree = "<group>";
@@ -126,8 +152,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1BD634723A3E7CB009F4148 /* LaunchScreen.storyboard in Resources */,
+				C1BD635E23A3E82E009F4148 /* ActivityReaderViewController.storyboard in Resources */,
 				C1BD634423A3E7CB009F4148 /* Assets.xcassets in Resources */,
-				C1BD634223A3E7CA009F4148 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +164,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1BD633F23A3E7CA009F4148 /* ViewController.swift in Sources */,
+				C1BD635523A3E80D009F4148 /* ActivityReaderPresenter.swift in Sources */,
+				C1BD635823A3E80D009F4148 /* ActivityReaderModels.swift in Sources */,
 				C1BD633B23A3E7CA009F4148 /* AppDelegate.swift in Sources */,
+				C1BD635923A3E80D009F4148 /* ActivityReaderViewController.swift in Sources */,
+				C1BD635623A3E80D009F4148 /* ActivityReaderWorker.swift in Sources */,
+				C1BD635723A3E80D009F4148 /* ActivityReaderRouter.swift in Sources */,
+				C1BD636023A3E97C009F4148 /* UIViewController+UIStoryboard.swift in Sources */,
+				C1BD635A23A3E80D009F4148 /* ActivityReaderInteractor.swift in Sources */,
 				C1BD633D23A3E7CA009F4148 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,14 +179,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C1BD634023A3E7CA009F4148 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C1BD634123A3E7CA009F4148 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C1BD634523A3E7CB009F4148 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
