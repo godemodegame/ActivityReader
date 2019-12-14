@@ -1,39 +1,26 @@
 import UIKit
 
-enum ActivityReader {
+enum TimerState {
+    case start
+    case stop
     
-    enum Model {
-        struct Request {
-            enum RequestType {
-                case checkActivityReader
-                case save(_ text: String)
-                case delete
-            }
-        }
-        struct Response {
-            enum ResponseType {
-                case displayAcceleration(data: Acceleration)
-                case showAlert
-                case changeButton(type: ButtonType)
-            }
-        }
-        struct ViewModel {
-            enum ViewModelData {
-                case showAlert
-                case changeButton(image: UIImage?)
-                case changeAcceleration(data: Acceleration)
-            }
-        }
+    func opposite() -> Self {
+        return self == .start ? .stop : .start
     }
     
-    enum ButtonType: String {
-        case play = "play.fill"
-        case pause = "stop.fill"
+    func imageName() -> String {
+        switch self {
+            
+        case .start:
+            return "stop.fill"
+        case .stop:
+            return "play.fill"
+        }
     }
-    
-    struct Acceleration {
-        let x: Double
-        let y: Double
-        let z: Double
-    }
+}
+
+struct Vector {
+    let x: Double
+    let y: Double
+    let z: Double
 }

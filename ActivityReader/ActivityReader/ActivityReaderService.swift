@@ -1,19 +1,14 @@
 import CoreMotion
 
-class ActivityReaderService {
+final class ActivityReaderService {
     let hertz: Double = 50
     let manager = CMMotionManager()
     var timer: Timer?
     
-    var isActive = false
-    
-    func startAccelerometer(updatingData: @escaping (ActivityReader.Acceleration) -> Void){
-        print("starting accelerometer")
-        
-        self.isActive = true
+    func startAccelerometer(updatingData: @escaping (ActivityReader.Vector) -> Void) {
         self.manager.startAccelerometerUpdates()
         
-        self.timer = Timer.scheduledTimer(withTimeInterval: 1/self.hertz, repeats: true, block: { [weak self] _ in
+        self.timer = Timer.scheduledTimer(withTimeInterval: 1 / self.hertz, repeats: true, block: { [weak self] _ in
             if let measurements = self?.manager.accelerometerData {
                 let x = measurements.acceleration.x
                 let y = measurements.acceleration.y
@@ -27,7 +22,6 @@ class ActivityReaderService {
     }
     
     func stopAccelerometer() {
-        self.isActive = false
         self.manager.stopAccelerometerUpdates()
         self.timer?.invalidate()
     }

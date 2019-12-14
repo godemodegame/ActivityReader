@@ -1,18 +1,28 @@
 import UIKit
 
 protocol ActivityReaderPresentationLogic {
-    func presentData(response: ActivityReader.Model.Response.ResponseType)
+    func display(acceleration: Vector)
+    func displayButtonImage(name: String)
+    func showAlert()
+    func showActivityViewController(with items: [URL])
 }
 
-class ActivityReaderPresenter: ActivityReaderPresentationLogic {
+final class ActivityReaderPresenter: ActivityReaderPresentationLogic {
     weak var viewController: ActivityReaderDisplayLogic?
     
-    func presentData(response: ActivityReader.Model.Response.ResponseType) {
-        switch response {
-        case .displayAcceleration(let data): self.viewController?.displayData(viewModel: .changeAcceleration(data: data))
-        case .changeButton(let type): self.viewController?.displayData(viewModel: .changeButton(image: UIImage(systemName: type.rawValue)))
-        case .showAlert: self.viewController?.displayData(viewModel: .showAlert)
-        }
+    func display(acceleration: Vector) {
+        self.viewController?.display(acceleration: acceleration)
     }
     
+    func displayButtonImage(name: String) {
+        self.viewController?.changeButton(image: UIImage(systemName: name))
+    }
+    
+    func showAlert() {
+        self.viewController?.showAlert()
+    }
+    
+    func showActivityViewController(with items: [URL]) {
+        self.viewController?.showActivityViewController(with: items)
+    }
 }

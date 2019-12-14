@@ -1,12 +1,16 @@
 import UIKit
 
-protocol ActivityReaderDisplayLogic: class {
-    func displayData(viewModel: ActivityReader.Model.ViewModel.ViewModelData)
+protocol ActivityReaderDisplayLogic: AnyObject {
+    func display(acceleration: Vector)
+    func changeButton(image: UIImage?)
+    func showAlert()
+    func showActivityViewController(with items: [URL])
 }
 
-class ActivityReaderViewController: UIViewController, ActivityReaderDisplayLogic {
+final class ActivityReaderViewController: UIViewController {
     
-    private var interactor: ActivityReaderBusinessLogic?
+    let configurator: ActivityReaderConfiguratorLogic = ActivityReaderConfigurator()
+    var interactor: ActivityReaderBusinessLogic?
     
     // MARK: IBOutlets & IBActions
     
@@ -17,49 +21,46 @@ class ActivityReaderViewController: UIViewController, ActivityReaderDisplayLogic
     @IBOutlet weak var accelerometerZLabel: UILabel!
     
     @IBAction func startButtonTapped(_ sender: UIButton) {
-        self.interactor?.makeRequest(request: .checkActivityReader)
-    }
-    
-    // MARK: Setup
-    
-    private func setup() {
-        let viewController        = self
-        let interactor            = ActivityReaderInteractor()
-        let presenter             = ActivityReaderPresenter()
-        viewController.interactor = interactor
-        interactor.presenter      = presenter
-        presenter.viewController  = viewController
+        self.interactor?.toggleAcceleration()
     }
     
     // MARK: View lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setup()
+        self.configurator.configure(with: self)
+    }
+}
+
+// MARK: - ActivityReaderDisplayLogic
+
+extension ActivityReaderViewController: ActivityReaderDisplayLogic {
+    func display(acceleration: Vector) {
+        self.accelerometerXLabel.text = "acc x: \(acceleration.x)"
+        self.accelerometerYLabel.text = "acc y: \(acceleration.y)"
+        self.accelerometerZLabel.text = "acc z: \(acceleration.z)"
     }
     
-    func displayData(viewModel: ActivityReader.Model.ViewModel.ViewModelData) {
-        switch viewModel {
-        case .changeAcceleration(let data):
-            self.accelerometerXLabel.text = "acc x: \(data.x)"
-            self.accelerometerYLabel.text = "acc y: \(data.y)"
-            self.accelerometerZLabel.text = "acc z: \(data.z)"
-        case .changeButton(let image): self.startButton.setBackgroundImage(image, for: .normal)
-        case .showAlert: self.showAlert()
-        }
+    func changeButton(image: UIImage?) {
+        self.startButton.setBackgroundImage(image, for: .normal)
     }
     
-    private func showAlert() {
+    func showAlert() {
         let alertController = UIAlertController(title: "Done", message: "Note:", preferredStyle: .alert)
         alertController.addTextField(configurationHandler: nil)
         alertController.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak self] _ in
             if let text = alertController.textFields?.first?.text {
-                self?.interactor?.makeRequest(request: .save(text))
+                self?.interactor?.save(text: text)
             }
         }))
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { [weak self] _ in
-            self?.interactor?.makeRequest(request: .delete)
+            self?.interactor?.removeData()
         }))
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func showActivityViewController(with items: [URL]) {
+        let activityController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        present(activityController, animated: true)
     }
 }
