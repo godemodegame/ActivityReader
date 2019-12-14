@@ -19,12 +19,9 @@ final class ActivityReaderService {
                 let gyroY = gyroData.rotationRate.y
                 let gyroZ = gyroData.rotationRate.z
                 
-                updatingData(.init(acc: Vector(x: accX,
-                                              y: accY,
-                                              z: accZ),
-                                   gyro: Vector(x: gyroX,
-                                               y: gyroY,
-                                               z: gyroZ)))
+                updatingData(.init(date: Date(),
+                                   acc: Vector(x: accX, y: accY, z: accZ),
+                                   gyro: Vector(x: gyroX, y: gyroY, z: gyroZ)))
             }
         })
     }

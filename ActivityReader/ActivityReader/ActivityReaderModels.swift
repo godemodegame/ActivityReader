@@ -26,6 +26,7 @@ struct Vector {
 }
 
 struct MotionData {
+    let date: Date
     let acc: Vector
     let gyro: Vector
 }

@@ -1,7 +1,7 @@
 import Foundation
 import CSV
 
-protocol ActivityReaderBusinessLogic {
+protocol ActivityReaderBusinessLogic: AnyObject {
     func toggleAcceleration()
     func save(text: String)
     func removeData()
@@ -39,7 +39,7 @@ final class ActivityReaderInteractor: ActivityReaderBusinessLogic {
         self.storageService.save(self.data, name: text)
         
         let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let items = [url.appendingPathComponent("file.csv")]
+        let items = [url.appendingPathComponent("\(text).csv")]
         self.presenter?.showActivityViewController(with: items)
         
         self.removeData()

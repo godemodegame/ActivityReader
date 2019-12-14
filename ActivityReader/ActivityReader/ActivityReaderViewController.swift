@@ -14,13 +14,13 @@ final class ActivityReaderViewController: UIViewController {
     
     // MARK: IBOutlets & IBActions
     
-    @IBOutlet weak var startButton: UIButton!
+    @IBOutlet private weak var startButton: UIButton!
     
-    @IBOutlet weak var accelerometerXLabel: UILabel!
-    @IBOutlet weak var accelerometerYLabel: UILabel!
-    @IBOutlet weak var accelerometerZLabel: UILabel!
+    @IBOutlet private weak var accelerometerXLabel: UILabel!
+    @IBOutlet private weak var accelerometerYLabel: UILabel!
+    @IBOutlet private weak var accelerometerZLabel: UILabel!
     
-    @IBAction func startButtonTapped(_ sender: UIButton) {
+    @IBAction private func startButtonTapped(_ sender: UIButton) {
         self.interactor?.toggleAcceleration()
     }
     

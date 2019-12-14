@@ -10,15 +10,14 @@ class StorageService {
     
     func save(_ data: [MotionData], name: String) {
         do {
-            self.csv.beginNewRow()
-            try data.forEach { try self.csv.write(row: ["\($0.acc.x)", "\($0.acc.y)", "\($0.acc.z)", "\($0.gyro.x)", "\($0.gyro.y)", "\($0.gyro.z)", name])}
+            try data.forEach { try csv.write(row: ["\($0.date)", "\($0.acc.x)", "\($0.acc.y)", "\($0.acc.z)", "\($0.gyro.x)", "\($0.gyro.y)", "\($0.gyro.z)", name])}
             
-            self.csv.stream.close()
+            csv.stream.close()
             let csvData = csv.stream.property(forKey: .dataWrittenToMemoryStreamKey) as! Data
             let csvString = String(data: csvData, encoding: .utf8)!
             
             if let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-                let fileURL = path.appendingPathComponent("file.csv")
+                let fileURL = path.appendingPathComponent("\(name).csv")
                 try csvString.write(to: fileURL, atomically: true, encoding: .utf8)
             }
         } catch let error {

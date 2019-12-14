@@ -1,6 +1,6 @@
 import UIKit
 
-protocol ActivityReaderPresentationLogic {
+protocol ActivityReaderPresentationLogic: AnyObject {
     func display(acceleration: Vector)
     func displayButtonImage(name: String)
     func showAlert()
