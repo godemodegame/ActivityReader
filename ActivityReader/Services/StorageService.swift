@@ -4,14 +4,14 @@ import CSV
 class StorageService {
     lazy var csv: CSVWriter = {
         let csv = try! CSVWriter(stream: .toMemory())
-        try? csv.write(row: ["x", "y", "z"])
+        try? csv.write(row: ["accX", "accY", "accZ", "gyroX", "gyroY", "gyroZ"])
         return csv
     }()
     
-    func save(_ data: [Vector], name: String) {
+    func save(_ data: [MotionData], name: String) {
         do {
             self.csv.beginNewRow()
-            try data.forEach { try self.csv.write(row: ["\($0.x)", "\($0.y)", "\($0.z)", name])}
+            try data.forEach { try self.csv.write(row: ["\($0.acc.x)", "\($0.acc.y)", "\($0.acc.z)", "\($0.gyro.x)", "\($0.gyro.y)", "\($0.gyro.z)", name])}
             
             self.csv.stream.close()
             let csvData = csv.stream.property(forKey: .dataWrittenToMemoryStreamKey) as! Data

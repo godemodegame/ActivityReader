@@ -53,6 +53,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C148FE7E23A4D17600C8EC52 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C17B99CB23A40CB40023EAD2 /* StorageService.swift */,
+				C1BD634F23A3E80D009F4148 /* ActivityReaderService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		C1BD632E23A3E7CA009F4148 = {
 			isa = PBXGroup;
 			children = (
@@ -75,7 +84,7 @@
 				C1BD633A23A3E7CA009F4148 /* AppDelegate.swift */,
 				C1BD633C23A3E7CA009F4148 /* SceneDelegate.swift */,
 				C1BD635C23A3E814009F4148 /* ActivityReader */,
-				C17B99CB23A40CB40023EAD2 /* StorageService.swift */,
+				C148FE7E23A4D17600C8EC52 /* Services */,
 				C1BD634323A3E7CB009F4148 /* Assets.xcassets */,
 				C1BD635F23A3E97C009F4148 /* UIViewController+UIStoryboard.swift */,
 				C1BD634523A3E7CB009F4148 /* LaunchScreen.storyboard */,
@@ -93,7 +102,6 @@
 				C1BD634E23A3E80D009F4148 /* ActivityReaderPresenter.swift */,
 				C1BD635123A3E80D009F4148 /* ActivityReaderModels.swift */,
 				C148FE7C23A4254A00C8EC52 /* ActivityReaderConfigurator.swift */,
-				C1BD634F23A3E80D009F4148 /* ActivityReaderService.swift */,
 			);
 			path = ActivityReader;
 			sourceTree = "<group>";

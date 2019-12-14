@@ -24,3 +24,8 @@ struct Vector {
     let y: Double
     let z: Double
 }
+
+struct MotionData {
+    let acc: Vector
+    let gyro: Vector
+}

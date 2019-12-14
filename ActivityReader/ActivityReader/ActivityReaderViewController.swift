@@ -61,6 +61,6 @@ extension ActivityReaderViewController: ActivityReaderDisplayLogic {
     
     func showActivityViewController(with items: [URL]) {
         let activityController = UIActivityViewController(activityItems: items, applicationActivities: nil)
-        present(activityController, animated: true)
+        self.present(activityController, animated: true)
     }
 }
