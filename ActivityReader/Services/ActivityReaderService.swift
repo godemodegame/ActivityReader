@@ -5,6 +5,13 @@ final class ActivityReaderService {
     let manager = CMMotionManager()
     var timer: Timer?
     
+    let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm:ss.SSSS"
+
+        return dateFormatter
+    }()
+    
     func startAccelerometer(updatingData: @escaping (MotionData) -> Void) {
         self.manager.startAccelerometerUpdates()
         self.manager.startGyroUpdates()
@@ -19,7 +26,7 @@ final class ActivityReaderService {
                 let gyroY = gyroData.rotationRate.y
                 let gyroZ = gyroData.rotationRate.z
                 
-                updatingData(.init(date: Date(),
+                updatingData(.init(date: self!.dateFormatter.string(from: Date()),
                                    acc: Vector(x: accX, y: accY, z: accZ),
                                    gyro: Vector(x: gyroX, y: gyroY, z: gyroZ)))
             }

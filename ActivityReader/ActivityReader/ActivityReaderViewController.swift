@@ -24,7 +24,7 @@ final class ActivityReaderViewController: UIViewController {
         self.interactor?.toggleAcceleration()
     }
     
-    // MARK: View lifecycle
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
