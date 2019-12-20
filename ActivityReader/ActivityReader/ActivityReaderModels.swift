@@ -10,7 +10,6 @@ enum TimerState {
     
     func imageName() -> String {
         switch self {
-            
         case .start:
             return "stop.fill"
         case .stop:

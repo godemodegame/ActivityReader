@@ -3,7 +3,7 @@ import UIKit
 protocol ActivityReaderDisplayLogic: AnyObject {
     func display(acceleration: Vector)
     func changeButton(image: UIImage?)
-    func showAlert()
+    func showAlert(saveCompletion: @escaping (String) -> Void, cancelCompletion: @escaping () -> Void)
     func showActivityViewController(with items: [URL])
 }
 
@@ -12,7 +12,7 @@ final class ActivityReaderViewController: UIViewController {
     let configurator: ActivityReaderConfiguratorLogic = ActivityReaderConfigurator()
     var interactor: ActivityReaderBusinessLogic?
     
-    // MARK: IBOutlets & IBActions
+    // MARK: - IBOutlets
     
     @IBOutlet private weak var startButton: UIButton!
     
@@ -20,15 +20,17 @@ final class ActivityReaderViewController: UIViewController {
     @IBOutlet private weak var accelerometerYLabel: UILabel!
     @IBOutlet private weak var accelerometerZLabel: UILabel!
     
-    @IBAction private func startButtonTapped(_ sender: UIButton) {
-        self.interactor?.toggleAcceleration()
-    }
-    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configurator.configure(with: self)
+    }
+    
+    // MARK: - Private Actions
+    
+    @IBAction private func startButtonTapped(_ sender: UIButton) {
+        self.interactor?.toggleAcceleration()
     }
 }
 
@@ -45,16 +47,16 @@ extension ActivityReaderViewController: ActivityReaderDisplayLogic {
         self.startButton.setBackgroundImage(image, for: .normal)
     }
     
-    func showAlert() {
+    func showAlert(saveCompletion: @escaping (String) -> Void, cancelCompletion: @escaping () -> Void) {
         let alertController = UIAlertController(title: "Done", message: "Note:", preferredStyle: .alert)
         alertController.addTextField(configurationHandler: nil)
-        alertController.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak self] _ in
+        alertController.addAction(UIAlertAction(title: "Save", style: .default, handler: { _ in
             if let text = alertController.textFields?.first?.text {
-                self?.interactor?.save(text: text)
+                saveCompletion(text)
             }
         }))
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { [weak self] _ in
-            self?.interactor?.removeData()
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+            cancelCompletion()
         }))
         self.present(alertController, animated: true, completion: nil)
     }

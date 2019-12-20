@@ -3,8 +3,6 @@ import CSV
 
 protocol ActivityReaderBusinessLogic: AnyObject {
     func toggleAcceleration()
-    func save(text: String)
-    func removeData()
 }
 
 final class ActivityReaderInteractor: ActivityReaderBusinessLogic {
@@ -13,30 +11,40 @@ final class ActivityReaderInteractor: ActivityReaderBusinessLogic {
     private var accelerometerService = ActivityReaderService()
     private var storageService = StorageService()
     
-    private var currentState: TimerState = .stop
-    var data: [MotionData] = []
-    var accelerometerData: [Vector] = []
-    var gyroscopeData: [Vector] = []
-    
-    func toggleAcceleration() {
-        self.currentState = self.currentState.opposite()
-        self.presenter?.displayButtonImage(name: self.currentState.imageName())
-        
-        switch self.currentState {
-        case .start:
-            self.accelerometerService.startAccelerometer(updatingData: { [weak self] data in
-                self?.presenter?.display(acceleration: data.acc)
-                self?.data.append(data)
-            })
+    private var currentState: TimerState = .stop {
+        didSet {
+            self.presenter?.displayButtonImage(name: self.currentState.imageName())
             
-        case .stop:
-            self.presenter?.showAlert()
-            self.accelerometerService.stopAccelerometer()
+            switch self.currentState {
+            
+            case .start:
+                self.accelerometerService.startAccelerometer(updatingData: { [weak self] data in
+                    self?.presenter?.display(acceleration: data.acc)
+                    self?.data.append(data)
+                })
+                
+            case .stop:
+                self.presenter?.showAlert(saveCompletion: { [weak self] text in
+                    self?.save(text: text)
+                }, cancelCompletion: { [weak self] in
+                    self?.removeData()
+                })
+                self.accelerometerService.stopAccelerometer()
+            }
         }
     }
+    private var data = [MotionData]()
+    private var accelerometerData = [Vector]()
+    private var gyroscopeData = [Vector]()
     
-    func save(text: String) {
-        self.storageService.save(self.data, name: text)
+    func toggleAcceleration() {
+        currentState = currentState.opposite()
+    }
+    
+    // MARK: - Private Methods
+    
+    private func save(text: String) {
+        self.storageService.save(data, name: text)
         
         let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let items = [url.appendingPathComponent("\(text).csv")]
@@ -45,7 +53,7 @@ final class ActivityReaderInteractor: ActivityReaderBusinessLogic {
         self.removeData()
     }
     
-    func removeData() {
+    private func removeData() {
         self.accelerometerData = []
         self.gyroscopeData = []
     }

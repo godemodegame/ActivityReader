@@ -1,9 +1,9 @@
 import CoreMotion
 
 final class ActivityReaderService {
-    let hertz: Double = 50
-    let manager = CMMotionManager()
-    var timer: Timer?
+    private let hertz: Double = 50
+    private let manager = CMMotionManager()
+    private var timer: Timer?
     
     let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
@@ -13,8 +13,8 @@ final class ActivityReaderService {
     }()
     
     func startAccelerometer(updatingData: @escaping (MotionData) -> Void) {
-        self.manager.startAccelerometerUpdates()
-        self.manager.startGyroUpdates()
+        manager.startAccelerometerUpdates()
+        manager.startGyroUpdates()
         
         self.timer = Timer.scheduledTimer(withTimeInterval: 1 / self.hertz, repeats: true, block: { [weak self] _ in
             if let accData = self?.manager.accelerometerData, let gyroData = self?.manager.gyroData {
@@ -34,8 +34,8 @@ final class ActivityReaderService {
     }
     
     func stopAccelerometer() {
-        self.manager.stopAccelerometerUpdates()
-        self.manager.stopGyroUpdates()
-        self.timer?.invalidate()
+        manager.stopAccelerometerUpdates()
+        manager.stopGyroUpdates()
+        timer?.invalidate()
     }
 }
